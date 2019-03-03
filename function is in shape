@@ -1,0 +1,32 @@
+// function in javascript
+function inShape(mousex,mousey,Path){
+  let path = Path;
+  let puntoX =  mousex;//if
+  let puntoY = mousey;
+  for(let i = 0;i<path.length;i++){
+  	let j = i+1;
+    if(j==path.length){
+        j = 0;
+      }
+  	//line(path[i].x,path[i].y,puntoX,puntoY);//lines to see shape
+    let a = dist(path[i].x,path[i].y,puntoX,puntoY)
+    //line(path[i].x,path[i].y,path[j].x,path[j].y);
+    let c = dist(path[i].x,path[i].y,path[j].x,path[j].y);
+    //line(path[j].x,path[j].y,puntoX,puntoY)
+    let b = dist(path[j].x,path[j].y,puntoX,puntoY)
+    let angC = (acos((pow(c,2)-pow(a,2)-pow(b,2))/(-2*a*b)))*180/PI;
+  anglePath[i] = angC;
+  }
+  if(anglePath.length==0){
+  anglePath[0]=0
+  }
+  const numbers = anglePath // sums the array 
+  const add = (a, b) =>
+    a + b
+  const sum = numbers.reduce(add)
+  if(sum>359.5 && sum<360.5){
+    return true
+  }else{
+    return false
+  }
+}
